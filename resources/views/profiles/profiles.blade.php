@@ -8,6 +8,11 @@
                 </div>
                 <div class="panel-body">
                     <img src="{{ Storage::url($user->avatar) }}" height="70px" width="70px" alt="">
+                    @if(auth()->check())
+                        <p class="text-center">
+                            <a href="{{ route('profile.edit') }}">update profile</a>
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>

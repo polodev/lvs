@@ -21,3 +21,14 @@ php artisan storage:link // in my case it wasn't necessary
 ===========================================================
 $this->hasOne(Profile::class)
 $this->belongsTo(User::class)
+
+#5,
+===========================================================
+//inside register controller to add a row inside profiles table. otherwise i got error
+$user->profile()->create([]);
+return $user;
+//update through relation
+auth()->user()->profile->update([
+    'location' => request('location'),
+    'about' => request('about')
+]);

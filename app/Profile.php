@@ -8,6 +8,6 @@ class Profile extends Model
 {
     protected $fillable = ['location', 'about'];
     public function user() {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

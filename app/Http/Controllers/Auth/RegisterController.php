@@ -68,7 +68,7 @@ class RegisterController extends Controller
             $avatar = 'public/defaults/avatars/male.png';
         }
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'slug' => str_slug($data['name']),
             'avatar' => $avatar,
@@ -76,5 +76,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        $user->profile()->create([]);
+        return $user;
     }
 }
