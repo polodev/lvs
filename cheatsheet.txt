@@ -16,3 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
 <img src="{{ Storage::url($user->avatar) }}" height="70px" width="70px" alt="">
 
 php artisan storage:link // in my case it wasn't necessary
+
+#3, Relationship one to one
+===========================================================
+$this->hasOne(Profile::class)
+$this->belongsTo(User::class)
