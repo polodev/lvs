@@ -32,3 +32,24 @@ auth()->user()->profile->update([
     'location' => request('location'),
     'about' => request('about')
 ]);
+public function update(Request $r) {
+    auth()->user()->profile->update([
+        'location' => $r->location,
+        'about' => $r->about
+    ]);
+}
+
+#6 upload images
+=======================================
+//form attribute
+enctype="multipart/form-data">
+//avatar storage
+if($r->hasFile('avatar')) {
+    Auth::user()->update([
+        'avatar' => $r->avatar->store('public/avatars')
+    ]);
+}
+
+
+
+

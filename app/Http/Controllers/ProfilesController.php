@@ -16,10 +16,20 @@ class ProfilesController extends Controller
         $info = Auth::user()->profile;
         return view('profiles.edit', compact('info'));
     }
-    public function update() {
+    public function update(Request $r) {
+//        auth()->user()->profile->update([
+//            'location' => request('location'),
+//            'about' => request('about')
+//        ]);
+        if($r->hasFile('avatar')) {
+
+            Auth::user()->update([
+                'avatar' => $r->avatar->store('public/avatars')
+            ]);
+        }
         auth()->user()->profile->update([
-            'location' => request('location'),
-            'about' => request('about')
+            'location' => $r->location,
+            'about' => $r->about
         ]);
         session()->flash('success', 'profile updated successfully');
         return redirect('home');
