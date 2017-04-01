@@ -1,2 +1,18 @@
-//1
+#1
+=======================================================
 str_slug()
+
+#2,  Route::group(), Route::get('slug', [uses => 'controller', as => 'name']),
+route('name', [slug => $someSlug]), Storage::url($url)
+========================================== ==========================================
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('profile/{slug}', [
+        'uses' => 'ProfilesController@index',
+        'as' => 'profile'
+    ]);
+});
+
+<a href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">My profile</a>
+<img src="{{ Storage::url($user->avatar) }}" height="70px" width="70px" alt="">
+
+php artisan storage:link // in my case it wasn't necessary
