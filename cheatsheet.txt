@@ -79,6 +79,10 @@ trait Friendable {
 response()->json($friendship, 200);
 json('fail', 501);
 
+#11 Testing add_friend and accept_friend method
+====================================================
+factory('<model>App\User', <number>5)->create()
+App\User::first();
 
 
 

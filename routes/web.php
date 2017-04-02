@@ -14,6 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/add_friend', function () {
+    $friend = App\User::first();
+    return $friend->add_friend(2);
+});
+Route::get('/accept_friend', function () {
+    $friend = App\User::first();
+    return $friend->accept_friend(2);
+});
 Route::get('/hello', function () {
     return Auth::user()->hello();
 });
