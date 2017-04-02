@@ -62,4 +62,16 @@ and use noty in blade template
     });
 @endif
 
+#9 trait
+==================================================
+use App\Traits\Friendable;
+    use Friendable;
+//Friendable.php
+namespace App\Traits
+trait Friendable {
+    public function hello() {
+        return 'hello world'
+    }
+}
+
 
