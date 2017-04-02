@@ -74,4 +74,23 @@ trait Friendable {
     }
 }
 
+#10 Friendable trait
+====================================================
+response()->json($friendship, 200);
+json('fail', 501);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
