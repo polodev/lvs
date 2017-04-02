@@ -27,6 +27,18 @@ Route::get('/friends', function () {
     $user = App\User::find(1);
     return $user->friends();
 });
+Route::get('/friends_id', function () {
+    $user = App\User::find(1);
+    return $user->friends_id();
+});
+Route::get('/is_friends_with', function () {
+    $user = App\User::find(1);
+    return $user->is_friends_with(4);
+});
+Route::get('/pending_request', function () {
+    $user = App\User::find(1);
+    return $user->pending_friend_requests();
+});
 Route::get('/hello', function () {
     return Auth::user()->hello();
 });

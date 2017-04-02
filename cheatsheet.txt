@@ -89,7 +89,10 @@ App\User::first();
 array_push($array, $value);
 foreach($arr, $val)
 
-
+#13, collect, is_array( $needle, $heystack )
+====================================================
+return collect($this->friends())->pluck('id'); //return []
+is_array($user_id, $this->friends_id()->toArray())
 
 
 
