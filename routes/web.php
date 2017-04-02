@@ -23,6 +23,10 @@ Route::get('/accept_friend', function () {
     $friend = App\User::first();
     return $friend->accept_friend(2);
 });
+Route::get('/friends', function () {
+    $user = App\User::find(1);
+    return $user->friends();
+});
 Route::get('/hello', function () {
     return Auth::user()->hello();
 });

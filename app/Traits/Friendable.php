@@ -1,6 +1,7 @@
 <?php
 namespace App\Traits;
 use App\Friendship;
+use App\User;
 
 /**
  * summary
@@ -31,6 +32,19 @@ trait Friendable
         return response()->json($friendship, 200);
       }
       return response()->json('fail', 501);
+    }
+    public function friends(){
+      $friends = [];
+      $f1 = Friendship::where('status', 1)->where('requester', $this->id)->get();
+      foreach ($f1 as $friendship) {
+        array_push($friends, User::find($friendship->user_requested));
+      }
+      $f2 = Friendship::where('status', 1)->where('user_requested', $this->id)->get();
+      foreach ($f2 as $friendship) {
+        array_push($friends, User::find($friendship->requester));
+      }
+      return $friends;
+
     }
 }
 

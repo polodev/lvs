@@ -84,6 +84,10 @@ json('fail', 501);
 factory('<model>App\User', <number>5)->create()
 App\User::first();
 
+#12 Adding friends function inside Friendable trait
+====================================================
+array_push($array, $value);
+foreach($arr, $val)
 
 
 
