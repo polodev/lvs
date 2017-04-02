@@ -85,7 +85,19 @@
         @yield('content')
     </div>
 
+    @if (Session::has('success'))
+        {{ Session::get('success') }}
+    @endif
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        @if (Session::has('success'))
+            noty({
+            type: 'success',
+            layout: 'bottomRight',
+            text: "{{ Session::get('success') }}"
+        });
+        @endif
+    </script>
 </body>
 </html>

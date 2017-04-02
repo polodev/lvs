@@ -50,6 +50,16 @@ if($r->hasFile('avatar')) {
     ]);
 }
 
-
+#8 using noty
+==================================================
+require('noty'); in bootstrap.js
+and use noty in blade template
+@if (Session::has('success'))
+    noty({
+        type: 'success',
+        layout: 'bottomRight',
+        text: "{{ Session::get('success') }}"
+    });
+@endif
 
 
