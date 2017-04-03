@@ -32,6 +32,11 @@
           console.log("response", response);
           if (response.data == 1) {
             this.status = 'waiting';
+            noty({
+              type: 'success',
+              layout: 'bottomRight',
+              text: "friend request sent"
+            });
             this.loading = false;
           }
         })
@@ -42,6 +47,11 @@
           console.log("response", response);
           if (response.data == 1) {
             this.status = 'friend';
+            noty({
+              type: 'success',
+              layout: 'bottomRight',
+              text: "you are now friends"
+            });
             this.loading = false;
           }
         })
