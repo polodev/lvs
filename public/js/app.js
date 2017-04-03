@@ -12197,13 +12197,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['profile_user_id'],
   mounted: function mounted() {
+    var _this = this;
+
     axios('/check_relationship_status/' + this.profile_user_id).then(function (response) {
       console.log("response", response.data);
+      _this.status = response.data.status;
+      _this.loading = false;
     });
+  },
+  data: function data() {
+    return {
+      status: '',
+      loading: true
+    };
   }
 });
 
@@ -33694,10 +33705,18 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('p', [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")])])
-}]}
+  return _c('div', [(_vm.loading) ? _c('p', [_vm._v("Loading")]) : _vm._e(), _vm._v(" "), (!_vm.loading) ? _c('p', {
+    staticClass: "text-center"
+  }, [(_vm.status == 0) ? _c('button', {
+    staticClass: "btn btn-primary"
+  }, [_vm._v("Add friend")]) : _vm._e(), _vm._v(" "), (_vm.status == 'pending') ? _c('button', {
+    staticClass: "btn btn-primary"
+  }, [_vm._v("Accept friend")]) : _vm._e(), _vm._v(" "), (_vm.status == 'waiting') ? _c('span', {
+    staticClass: "success"
+  }, [_vm._v("waiting")]) : _vm._e(), _vm._v(" "), (_vm.status == 'friend') ? _c('span', {
+    staticClass: "success"
+  }, [_vm._v("friend")]) : _vm._e()]) : _vm._e()])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

@@ -12,7 +12,7 @@ class FriendshipsController extends Controller
     //if $user already requested
     if ($user->has_pending_friend_requests_sent_from($id)) {
       return [
-        'status' => 'pending request'
+        'status' => 'pending'
       ];
     }
     //if I requested to user

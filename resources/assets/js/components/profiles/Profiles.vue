@@ -1,11 +1,12 @@
 <template>
   <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p v-if="loading">Loading</p>
+    <p v-if="!loading" class="text-center">
+      <button class="btn btn-primary" v-if="status==0">Add friend</button>
+      <button class="btn btn-primary" v-if="status=='pending'">Accept friend</button>
+      <span class="success" v-if="status=='waiting'">waiting</span>
+      <span class="success" v-if="status=='friend'">friend</span>
+    </p>
   </div>
 </template>
 <script>
@@ -14,7 +15,15 @@
     mounted () {
       axios('/check_relationship_status/' + this.profile_user_id).then((response) => {
         console.log("response", response.data);
+        this.status = response.data.status;
+        this.loading = false;
       })
+    },
+    data () {
+      return {
+        status: '',
+        loading: true
+      }
     }
   }
 </script>

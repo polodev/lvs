@@ -95,10 +95,18 @@ return collect($this->friends())->pluck('id'); //return []
 is_array($user_id, $this->friends_id()->toArray())
 
 #14, added add_friend and accept_friend validation
+====================================================
 #15, added view profile
+====================================================
 //vue
 Vue.component('profile', require('./components/profiles/Profiles.vue'));
 mounted() {}, props: []
+
+#16, 
+====================================================
+
+#17, 
+====================================================
 
 
 
