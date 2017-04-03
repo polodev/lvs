@@ -13,23 +13,42 @@ trait Friendable
       return 'hello world';
     }
     public function add_friend($requester_id){
+      //if $requester_id is mine
+      if($requester_id == $this->user_id) {
+        return 0;
+      }
+      //if already requested to me
+      if ($this->has_pending_friend_requests_sent_from($requester_id) == 1) {
+        return $this->accept_friend($requester_id);
+      }
+      //if already i requested
+      if ($this->has_pending_friend_requests_sent_to($requester_id) == 1) {
+        return "already requested";
+      }
+      //if we are friends
+      if($this->is_friends_with($requester_id)) {
+        return "already friends"; 
+      }
       $friendship = Friendship::create([
           'requester' => $requester_id,
           'user_requested' => $this->id
         ]);
       if($friendship){
-        return response()->json($friendship, 200);
+        return 1;
       }
-        return response()->json('fail', 501);
+        return 0;
     }
     public function accept_friend($requester_id){
+      if ($this->has_pending_friend_requests_sent_from($requester_id) == 0) {
+        return 0;
+      }
       $friendship = Friendship::where('requester', $requester_id)
                       ->where('user_requested', $this->id)->first();
       if ($friendship) {
         $friendship->update([
             'status' => 1
           ]);
-        return response()->json($friendship, 200);
+        return 1;
       }
       return response()->json('fail', 501);
     }
@@ -58,9 +77,37 @@ trait Friendable
     }
     public function is_friends_with($user_id){
       if(in_array($user_id, $this->friends_id()->toArray())) {
-        return response()->json('friend', 200);
+        return 1;
       }
-        return response()->json('fail', 501);
+        return 0;
+    }
+
+    public function pending_friend_requests_id(){
+      return collect($this->pending_friend_requests())->pluck('id');
+    }
+    public function pending_friend_requests_sent(){
+      $users = [];
+      $f1 = Friendship::where('status', 0)
+      ->where('requester', $this->id)->get();
+      foreach ($f1 as $friendship) {
+        array_push($users, User::find($friendship->user_requested));
+      }
+      return $users;
+    }
+    public function pending_friend_requests_sent_id(){
+      return collect($this->pending_friend_requests_sent())->pluck('id');
+    }
+    public function has_pending_friend_requests_sent_from($user_id){
+      if( in_array($user_id, $this->pending_friend_requests_id()->toArray()) ) {
+        return 1;
+      }
+        return 0;
+    }
+    public function has_pending_friend_requests_sent_to($user_id){
+      if( in_array($user_id, $this->pending_friend_requests_sent_id()->toArray()) ) {
+        return 1;
+      }
+        return 0;
     }
 }
 

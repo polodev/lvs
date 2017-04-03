@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/add_friend', function () {
     $friend = App\User::first();
-    return $friend->add_friend(2);
+    return $friend->add_friend(9);
 });
 Route::get('/accept_friend', function () {
     $friend = App\User::first();
@@ -39,6 +39,28 @@ Route::get('/pending_request', function () {
     $user = App\User::find(1);
     return $user->pending_friend_requests();
 });
+
+
+Route::get('/pending_request_id', function () {
+    $user = App\User::find(1);
+    return $user->pending_friend_requests_id();
+});
+
+Route::get('/pending_request_sent', function () {
+    $user = App\User::find(1);
+    return $user->pending_friend_requests_sent();
+});
+Route::get('/pending_friend_requests_sent_id', function () {
+    $user = App\User::find(1);
+    return $user->pending_friend_requests_sent_id();
+});
+
+Route::get('/has_pending_friend_requests_sent_to', function () {
+    $user = App\User::find(1);
+    return $user->has_pending_friend_requests_sent_to(5);
+});
+
+
 Route::get('/hello', function () {
     return Auth::user()->hello();
 });
