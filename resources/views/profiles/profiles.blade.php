@@ -16,11 +16,13 @@
                     @endif
                 </div>
             </div>
+            @if (auth()->id() != $user->id)
             <div class="panel panel-default">
                 <div class="panel-body">
                     <profile :profile_user_id="{{ $user->id }}"></profile>
                 </div>
             </div>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <p>About</p>

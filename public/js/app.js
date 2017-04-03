@@ -12229,6 +12229,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this2.loading = false;
         }
       });
+    },
+    accept_friend: function accept_friend() {
+      var _this3 = this;
+
+      this.loading = true;
+      axios.get('/accept_friend/' + this.profile_user_id).then(function (response) {
+        console.log("response", response);
+        if (response.data == 1) {
+          _this3.status = 'friend';
+          _this3.loading = false;
+        }
+      });
     }
   }
 });
@@ -33728,11 +33740,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.add_friend
     }
   }, [_vm._v("Add friend")]) : _vm._e(), _vm._v(" "), (_vm.status == 'pending') ? _c('button', {
-    staticClass: "btn btn-primary"
+    staticClass: "btn btn-primary",
+    on: {
+      "click": _vm.accept_friend
+    }
   }, [_vm._v("Accept friend")]) : _vm._e(), _vm._v(" "), (_vm.status == 'waiting') ? _c('span', {
-    staticClass: "success"
+    staticClass: "text-success"
   }, [_vm._v("waiting")]) : _vm._e(), _vm._v(" "), (_vm.status == 'friend') ? _c('span', {
-    staticClass: "success"
+    staticClass: "text-success"
   }, [_vm._v("friend")]) : _vm._e()]) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
