@@ -24,7 +24,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <p>About Me</p>
+                    <p>About</p>
                 </div>
                 <div class="panel-body">
                     <p>{{ $user->profile->about }}</p>
