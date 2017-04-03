@@ -12,26 +12,26 @@ trait Friendable
     {
       return 'hello world';
     }
-    public function add_friend($requester_id){
+    public function add_friend($user_requested_id){
       //if $requester_id is mine
-      if($requester_id == $this->user_id) {
+      if($user_requested_id == $this->user_id) {
         return 0;
       }
       //if already requested to me
-      if ($this->has_pending_friend_requests_sent_from($requester_id) == 1) {
-        return $this->accept_friend($requester_id);
+      if ($this->has_pending_friend_requests_sent_from($user_requested_id) == 1) {
+        return $this->accept_friend($user_requested_id);
       }
       //if already i requested
-      if ($this->has_pending_friend_requests_sent_to($requester_id) == 1) {
+      if ($this->has_pending_friend_requests_sent_to($user_requested_id) == 1) {
         return "already requested";
       }
       //if we are friends
-      if($this->is_friends_with($requester_id)) {
+      if($this->is_friends_with($user_requested_id)) {
         return "already friends"; 
       }
       $friendship = Friendship::create([
-          'requester' => $requester_id,
-          'user_requested' => $this->id
+          'requester' => $this->id,
+          'user_requested' => $user_requested_id
         ]);
       if($friendship){
         return 1;

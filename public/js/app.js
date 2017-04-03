@@ -12215,6 +12215,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       status: '',
       loading: true
     };
+  },
+
+  methods: {
+    add_friend: function add_friend() {
+      var _this2 = this;
+
+      this.loading = true;
+      axios.get('/add_friend/' + this.profile_user_id).then(function (response) {
+        console.log("response", response);
+        if (response.data == 1) {
+          _this2.status = 'waiting';
+          _this2.loading = false;
+        }
+      });
+    }
   }
 });
 
@@ -33708,7 +33723,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', [(_vm.loading) ? _c('p', [_vm._v("Loading")]) : _vm._e(), _vm._v(" "), (!_vm.loading) ? _c('p', {
     staticClass: "text-center"
   }, [(_vm.status == 0) ? _c('button', {
-    staticClass: "btn btn-primary"
+    staticClass: "btn btn-primary",
+    on: {
+      "click": _vm.add_friend
+    }
   }, [_vm._v("Add friend")]) : _vm._e(), _vm._v(" "), (_vm.status == 'pending') ? _c('button', {
     staticClass: "btn btn-primary"
   }, [_vm._v("Accept friend")]) : _vm._e(), _vm._v(" "), (_vm.status == 'waiting') ? _c('span', {
