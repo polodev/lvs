@@ -9,7 +9,7 @@
                 <div class="panel-body text-center">
                     <img src="{{ Storage::url($user->avatar) }}" height="70px" width="70px" alt="">
                     <p>{{ $user->profile->location }}</p>
-                    @if(auth()->check())
+                    @if(auth()->check() && auth()->id() == $user->id)
                         <p class="text-center">
                             <a href="{{ route('profile.edit') }}">update profile</a>
                         </p>
@@ -17,6 +17,15 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <div class="panel-body">
+                    <p> {{ $user->id }} </p>
+                    <profile :profile_user_id="{{ $user->id }}"></profile>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p>About Me</p>
+                </div>
                 <div class="panel-body">
                     <p>{{ $user->profile->about }}</p>
                 </div>
