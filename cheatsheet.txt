@@ -112,10 +112,16 @@ data () {
 
     }
 }
-
 #18
 ====================================================
-
+#21
+====================================================
+yarn add laravel-echo
+uncomment echo stuff inside bootstrap.js file
+pusher and mailtrap key in .env file
+uncomment broadcasting service provider class in config/app.php file
+php artisan notifications:table
+php artisan migrate
 
 
 
