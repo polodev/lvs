@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Notifications\NewFriendRequest;
 use Auth;
+use Illuminate\Http\Request;
 
 class FriendshipsController extends Controller
 {
@@ -25,7 +25,9 @@ class FriendshipsController extends Controller
       return ['status' => 0 ];
   }
   public function add_friend($id){
-    return Auth::user()->add_friend($id);
+    $response = Auth::user()->add_friend($id);
+    User::find($id)->notify(new NewFriendRequest(Auth::user()));
+    return $response;
   }
   public function accept_friend($id){
     return Auth::user()->accept_friend($id);

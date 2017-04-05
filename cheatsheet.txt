@@ -123,7 +123,23 @@ uncomment broadcasting service provider class in config/app.php file
 php artisan notifications:table
 php artisan migrate
 
-
+#22
+====================================================
+php artisan make:notification NewFriendRequest
+//inside FriendshipsController
+User::find($id)->notify(new NewFriendRequest(Auth::user()));
+//inside NewFriendRequest
+public function via($notifiable)
+{
+    return ['mail', 'database', 'broadcast'];
+}
+public function toArray($notifiable)
+{
+    return [
+        'name' => $this->user->name,
+        'messages' => $this->user->name . ' has sent you friend request'
+    ];
+}
 
 
 
