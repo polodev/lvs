@@ -83,6 +83,9 @@
         </nav>
 
         @yield('content')
+        @if(auth()->check())
+            <notification :id={{ auth()->id() }}></notification>
+        @endif
     </div>
 
     @if (Session::has('success'))

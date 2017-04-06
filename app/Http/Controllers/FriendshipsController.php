@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Notifications\NewFriendRequest;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 

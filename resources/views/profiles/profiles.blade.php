@@ -9,7 +9,6 @@
                 <div class="panel-body text-center">
                     <img src="{{ Storage::url($user->avatar) }}" height="70px" width="70px" alt="">
                     <p>{{ $user->profile->location }}</p>
-                    <notification :id={{ auth()->id() }}></notification>
                     @if(auth()->check() && auth()->id() == $user->id)
                         <p class="text-center">
                             <a href="{{ route('profile.edit') }}">update profile</a>
