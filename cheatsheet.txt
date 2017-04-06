@@ -168,6 +168,14 @@ Echo.private(`App.User.${this.id}`)
     console.log(notification.type);
 });
 
+#27 laravel queue system
+===============================================================================================================
+from .env file set QUEUE_DRIVER=database
+php artisan queue:table >> to create job table
+Notification class will implements ShouldQueue class
+//to iterate through all queue from database
+php artisan queue:work //its continuous 
+
 
 
 
