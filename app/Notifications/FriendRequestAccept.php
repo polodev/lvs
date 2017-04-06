@@ -3,9 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class FriendRequestAccept extends Notification
 {
@@ -69,9 +70,9 @@ class FriendRequestAccept extends Notification
      */
     public function toBroadcast($notifiable)
     {
-        return [
-            'name' => $this->user->name,
-            'messages' => $this->user->name . ' has received your friend request'
-        ];
+        return new BroadcastMessage([
+                'name' => $this->user->name,
+                'messages' => $this->user->name . ' has received your friend request'
+            ]);
     }
 }
