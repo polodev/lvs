@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -18,7 +19,7 @@ class NewFriendRequest extends Notification
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
     }
@@ -46,6 +47,13 @@ class NewFriendRequest extends Notification
                     ->line($this->user->name . ' has sent you friend request')
                     ->action('View Profile', route('profile', ['slug' => $this->user->slug]))
                     ->line('Thank you for using our laravel-vue app!');
+    }
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage([
+            'name' => $this->user->name,
+            'messages' => $this->user->name . ' has sent you friend request'
+            ]);
     }
 
     /**

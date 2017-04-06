@@ -45,5 +45,8 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: 'your-pusher-key'
+    key: '0c9f33f1586d7dff5bfd'
 });
+Pusher.log = function (message) {
+  window.console.log(message);
+}

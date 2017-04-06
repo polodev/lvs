@@ -141,6 +141,36 @@ public function toArray($notifiable)
     ];
 }
 
+#24 shit things happen when i try to implement notification. in NewFriendRequest class I should implement toBroadcast function inorder to pusher:subscription_succeeded
+===============================================================================================================
+composer require pusher/pusher-php-server //for backend driver
+npm install --save laravel-echo pusher-js //for frontend dependencies
+App\Providers\BroadcastServiceProvider //uncomment in config/app.php
+add pusher credentials in .env file. use default cluster when make a pusher app(due to default cluster i faced issue);
+//uncomment following code inside resources/assets/js/bootstrap.js
+import Echo from "laravel-echo"
+window.Pusher = require('pusher-js');
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'your-pusher-key'
+});
+implement toBroadcast function in generated notification class
+public function toBroadcast($notifiable)
+{
+    return new BroadcastMessage([
+        'name' => $this->user->name,
+        'messages' => $this->user->name . ' has sent you friend request'
+        ]);
+}
+//in frontend using echo for notification receiving and making app/broadcast/auth request
+Echo.private(`App.User.${this.id}`)
+.notification((notification) => {
+    console.log(notification.type);
+});
+
+
+
+
 
 
 
