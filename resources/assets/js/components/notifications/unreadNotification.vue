@@ -1,7 +1,7 @@
 <template>
   <li>
     <a href="/notification">
-      unread notifications <span class="badge">{{ notifications.length }}</span>
+      unread notifications <span class="badge">{{ allNotificationsCount }}</span>
     </a>
   </li>
 </template>
@@ -20,10 +20,16 @@ export default {
   methods: {
       getUnread() {
         axios.get('/get_unread_notifications').then((response) => {
-          this.notifications = response.data
+          response.data.forEach((notification) => {
+            this.$store.commit('addNotifications', notification);
+          })
         })
       }
-    
+  },
+  computed: {
+    allNotificationsCount () {
+      return this.$store.getters.allNotificationsCount;
+    }
   }
 }
 </script>

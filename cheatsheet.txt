@@ -203,6 +203,26 @@ getters: {}, mutations: {}, actions: {}
 //for getting unreadNotifications of authenticate user
 return auth()->user()->unreadNotifications;
 
+#31 adding data to store and retrieving data from store
+==============================================================
+//adding data
+this.$store.commit('addNotifications', notification);
+//retrieving data inside computed:
+return this.$store.getters.allNotificationsCount;
+//inside store state is the bound first argument inside getters and mutations
+  getters: {
+    allNotifications(state) {
+      return state.notifications;
+    }
+  },
+  mutations: {
+    addNotifications(state, notification) {
+      return state.notifications.push(notification);
+    }
+  },
+
+
+
 
 
 
