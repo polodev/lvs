@@ -21664,7 +21664,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     }
   },
   mutations: {
-    addNotifications: function addNotifications(state, notification) {
+    addNotification: function addNotification(state, notification) {
       return state.notifications.push(notification);
     }
   },
@@ -49264,6 +49264,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['id'],
   methods: {
     listen: function listen() {
+      var _this = this;
+
       Echo.private('App.User.' + this.id).notification(function (notification) {
         console.log("notification", notification);
         noty({
@@ -49272,6 +49274,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           text: notification.name + notification.message
         });
         document.getElementById('noty_audio').play();
+        _this.$store.commit('addNotification', notification);
       });
     }
   }
@@ -49282,7 +49285,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(39)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 65 */
@@ -49433,7 +49436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/get_unread_notifications').then(function (response) {
         response.data.forEach(function (notification) {
-          _this.$store.commit('addNotifications', notification);
+          _this.$store.commit('addNotification', notification);
         });
       });
     }

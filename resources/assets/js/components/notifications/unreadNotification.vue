@@ -21,7 +21,7 @@ export default {
       getUnread() {
         axios.get('/get_unread_notifications').then((response) => {
           response.data.forEach((notification) => {
-            this.$store.commit('addNotifications', notification);
+            this.$store.commit('addNotification', notification);
           })
         })
       }

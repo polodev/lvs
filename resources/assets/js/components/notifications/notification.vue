@@ -26,6 +26,7 @@ export default {
             text: notification.name + notification.message
           });
           document.getElementById('noty_audio').play();
+          this.$store.commit('addNotification', notification)
         });
     }
   }

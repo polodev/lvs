@@ -17,7 +17,7 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    addNotifications(state, notification) {
+    addNotification(state, notification) {
       return state.notifications.push(notification);
     }
   },
