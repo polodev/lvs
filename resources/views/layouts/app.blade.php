@@ -47,6 +47,7 @@
                             <li>
                                 <a href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">My profile</a>
                             </li>
+                            <unread-notification></unread-notification>
                         @endif
                     </ul>
 

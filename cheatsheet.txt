@@ -198,6 +198,11 @@ const app = new Vue({
 ==============================================================
 getters: {}, mutations: {}, actions: {}
 
+#31 
+==============================================================
+//for getting unreadNotifications of authenticate user
+return auth()->user()->unreadNotifications;
+
 
 
 

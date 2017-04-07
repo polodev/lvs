@@ -15,7 +15,8 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('profile', require('./components/profiles/Profiles.vue'));
-Vue.component('notification', require('./components/notification.vue'));
+Vue.component('notification', require('./components/notifications/notification.vue'));
+Vue.component('unread-notification', require('./components/notifications/unreadNotification.vue'));
 
 const app = new Vue({
     el: '#app',
