@@ -12191,7 +12191,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     listen: function listen() {
       Echo.private('App.User.' + this.id).notification(function (notification) {
-        console.log(notification.type);
+        console.log("notification", notification);
+        noty({
+          type: 'success',
+          layout: 'bottomRight',
+          text: notification.name + notification.message
+        });
+        document.getElementById('noty_audio').play();
       });
     }
   }
@@ -14721,7 +14727,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(37)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 37 */

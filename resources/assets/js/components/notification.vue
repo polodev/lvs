@@ -19,7 +19,13 @@ export default {
     listen () {
       Echo.private(`App.User.${this.id}`)
         .notification((notification) => {
-          console.log(notification);
+          console.log("notification", notification);
+          noty({
+            type: 'success',
+            layout: 'bottomRight',
+            text: notification.name + notification.message
+          });
+          document.getElementById('noty_audio').play();
         });
     }
   }

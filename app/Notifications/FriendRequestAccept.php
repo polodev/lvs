@@ -58,7 +58,8 @@ class FriendRequestAccept extends Notification implements ShouldQueue
     {
         return [
             'name' => $this->user->name,
-            'messages' => $this->user->name . ' has received your friend request'
+            'message' => ' has received your friend request',
+            'dhaka' => 'hello dhaka'
         ];
     }
 
@@ -72,7 +73,8 @@ class FriendRequestAccept extends Notification implements ShouldQueue
     {
         return new BroadcastMessage([
                 'name' => $this->user->name,
-                'messages' => $this->user->name . ' has received your friend request'
+                'message' => ' has received your friend request',
+                'dhaka' => 'hello dhaka'
             ]);
     }
 }
