@@ -219,8 +219,15 @@ return this.$store.getters.allNotificationsCount;
     addNotifications(state, notification) {
       return state.notifications.push(notification);
     }
-  },
+  }
 
+#34 
+==============================================================
+{{ $notification->data['name'] }} &nbsp; {{ $notification->data['message'] }}
+public function notifications(){
+    auth()->user()->unreadNotifications->markAsRead();
+    return view('notifications.notifications')->with('notifications', auth()->user()->notifications);
+}
 
 
 

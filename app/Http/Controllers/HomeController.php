@@ -16,6 +16,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function notifications(){
+        auth()->user()->unreadNotifications->markAsRead();
+        return view('notifications.notifications')->with('notifications', auth()->user()->notifications);
+    }
+
     /**
      * Show the application dashboard.
      *

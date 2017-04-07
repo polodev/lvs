@@ -31,6 +31,11 @@ Route::get('/get_unread_notifications', function () {
     return auth()->user()->unreadNotifications;
 });
 
+Route::get('/notifications', [
+    'uses' => 'HomeController@notifications',
+    'as' => 'notifications'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

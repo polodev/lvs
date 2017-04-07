@@ -49462,7 +49462,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('a', {
     attrs: {
-      "href": "/notification"
+      "href": "/notifications"
     }
   }, [_vm._v("\n    unread notifications "), _c('span', {
     staticClass: "badge"
