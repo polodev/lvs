@@ -21688,7 +21688,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   state: {
     auth: false
-  }
+  },
+  getters: {},
+  mutations: {},
+  actions: {}
 });
 
 /***/ }),
