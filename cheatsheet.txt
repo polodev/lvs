@@ -176,6 +176,25 @@ Notification class will implements ShouldQueue class
 //to iterate through all queue from database
 php artisan queue:work //its continuous 
 
+#28
+===============================================================================================================
+//for getting public directory inside blade
+{{ asset('file_path') }}
+
+#29 store management using vuex
+==============================================================
+Vue.use(Vuex);
+export const store = new Vuex.Store({
+  state: {
+    auth: false
+  }
+})
+//adding root vue instance
+const app = new Vue({
+    el: '#app',
+    store
+});
+
 
 
 
