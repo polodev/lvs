@@ -228,6 +228,22 @@ public function notifications(){
     auth()->user()->unreadNotifications->markAsRead();
     return view('notifications.notifications')->with('notifications', auth()->user()->notifications);
 }
+#35  watch:
+==============================================================
+data () {
+    return {
+        content: ""
+    }
+}
+watch: {
+    content() {
+      if (this.content.length > 0) {
+        this.btnDisabled = false
+      } else {
+        this.btnDisabled = true
+      }
+    }
+}
 
 
 
