@@ -1,6 +1,5 @@
 <template>
   <div>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ipsa quis autem quasi numquam iure sapiente esse quos illo repudiandae id ratione dignissimos delectus laudantium quas a, aliquid ullam inventore.
   </div>
 </template>
 
