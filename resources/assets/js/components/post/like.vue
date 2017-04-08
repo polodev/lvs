@@ -5,8 +5,8 @@
       <img v-for="like in post.likes" :src="like.user.avatar" class="avatar-like" alt="">
     </p>
     <p>
-      <button class="btn-primary btn-xs" v-if="isAuthUserLike">Like the post</button>
-      <button class="btn-danger btn-xs" v-else="isAuthUserLike">unlike the post</button>
+      <button class="btn-primary btn-xs" v-if="isAuthUserLike" @click="likePost">Like the post</button>
+      <button class="btn-danger btn-xs" v-else="isAuthUserLike" @click="unlikePost">unlike the post</button>
     </p>
   </div>
 </template>
@@ -16,6 +16,19 @@
 
     },
     props: ['id'],
+    methods: {
+      likePost() {
+        axios.get('/like/' + this.id).then(response => {
+          this.$store.commit('updatePostLike', {
+            id: this.id,
+            like: response.data
+          })
+        })
+      },
+      unlikePost() {
+
+      }
+    },
     computed: {
       likers () {
         let likers = [];

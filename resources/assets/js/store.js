@@ -33,6 +33,15 @@ export const store = new Vuex.Store({
     },
     setAuthUserData (state, user) {
       return state.authUser = user;
+    },
+    updatePostLike(state, payload) {
+      let post = state.posts.find(p => {
+        return p.id === payload.id;
+      });
+      console.log("post after finding",post);
+      return post.likes.push(payload.like);
+    },
+    updatePostUnlike(state, id) {
     }
   },
   actions: {
