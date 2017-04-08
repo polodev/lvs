@@ -15,6 +15,12 @@ class FeedsController extends Controller
         array_push($feed, $post);
       }
     }
+    forEach(auth()->user()->posts as $post) {
+      array_push($feed, $post);
+    }
+    usort($feed, function ($p1, $p2) {
+      return $p1->id < $p2->id;
+    });
     return $feed;
   }
 }
