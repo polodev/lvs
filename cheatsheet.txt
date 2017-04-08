@@ -249,6 +249,18 @@ watch: {
 ==============================================================
 $friends = Auth::user()->friends();
 
+#40
+==============================================================
+//egar loading from Model
+protected $with = ['relationship_name']
+//accessor inside Model
+get[columnName]Attribute() {}
+//get full path
+asset(Storage::url($avatar));
+//example inside User Model
+public function getAvatarAttribute($avatar){
+  return asset(Storage::url($avatar));
+}
 
 
 

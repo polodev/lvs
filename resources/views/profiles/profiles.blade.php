@@ -7,7 +7,7 @@
                     <p>{{ $user->name }}'s profile</p>
                 </div>
                 <div class="panel-body text-center">
-                    <img src="{{ Storage::url($user->avatar) }}" height="70px" width="70px" alt="">
+                    <img src="{{ $user->avatar }}" height="70px" width="70px" alt="">
                     <p>{{ $user->profile->location }}</p>
                     @if(auth()->check() && auth()->id() == $user->id)
                         <p class="text-center">
