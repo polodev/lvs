@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
   state: {
     auth: false,
     notifications: [],
-    posts: []
+    posts: [],
+    authUser: {}
   },
   getters: {
     allNotifications(state) {
@@ -26,6 +27,9 @@ export const store = new Vuex.Store({
     },
     addFeed ( state, post) {
       return state.posts.push(post);
+    },
+    setAuthUserData (state, user) {
+      return state.authUser = user;
     }
   },
   actions: {

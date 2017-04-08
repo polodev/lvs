@@ -44,6 +44,9 @@ Route::get('/feed', [
     'uses' => 'FeedsController@index',
     'as' => 'feed'
 ]);
+Route::get('/get_auth_user_data', function () {
+    return Auth::user();
+});
 
 Auth::routes();
 
