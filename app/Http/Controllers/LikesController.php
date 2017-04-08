@@ -16,9 +16,10 @@ class LikesController extends Controller
     return Like::find($like->id);
   }
   public function unlike($post_id){
-    return Like::where('user_id', auth()->id())
+    $like = Like::where('user_id', auth()->id())
     ->where('post_id', $post_id)
-    ->first()
-    ->delete();
+    ->first();
+    $like->delete();
+    return $like->id;
   }
 }

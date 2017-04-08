@@ -25,8 +25,14 @@
           })
         })
       },
-      unlikePost() {
-
+      unlikePost(likeId) {
+        axios.get('/unlike/' + this.id).then(response => {
+          console.log('response', response);
+          this.$store.commit('updatePostUnlike', {
+            post_id: this.id,
+            like_id: response.data
+          });
+        })
       }
     },
     computed: {
