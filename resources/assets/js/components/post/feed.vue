@@ -21,6 +21,17 @@
 </template>
 <script>
   export default {
-
+    mounted () {
+      this.getFeed()
+    },
+    methods: {
+      getFeed() {
+        axios.get('/feed').then(response => {
+          response.data.forEach(post => {
+            this.$store.commit('addFeed', post);
+          })
+        });
+      }
+    }
   }
 </script>

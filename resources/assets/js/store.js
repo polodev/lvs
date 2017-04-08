@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     auth: false,
-    notifications: []
+    notifications: [],
+    posts: []
   },
   getters: {
     allNotifications(state) {
@@ -19,6 +20,9 @@ export const store = new Vuex.Store({
   mutations: {
     addNotification(state, notification) {
       return state.notifications.push(notification);
+    },
+    addFeed ( state, post) {
+      return state.posts.push(post);
     }
   },
   actions: {

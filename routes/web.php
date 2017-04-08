@@ -40,6 +40,10 @@ Route::post('/post/create', [
     'uses' => 'PostsController@store',
     'as' => 'post'
 ]);
+Route::get('/feed', [
+    'uses' => 'FeedsController@index',
+    'as' => 'feed'
+]);
 
 Auth::routes();
 
