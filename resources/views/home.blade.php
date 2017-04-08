@@ -2,4 +2,5 @@
 
 @section('content')
     <post></post>
+    <feed></feed>
 @endsection
