@@ -19,6 +19,9 @@ export const store = new Vuex.Store({
     },
     posts (state) {
       return state.posts;
+    },
+    getAuthUser(state) {
+      return state.authUser;
     }
   },
   mutations: {
