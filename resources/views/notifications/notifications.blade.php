@@ -9,8 +9,10 @@
             <div class="panel-body">
                 <ul>
                     @foreach($notifications as $notification)
-                        {{ $notification->data['name'] }} &nbsp; {{ $notification->data['message'] }}
-                        <span class="pull-right"> {{ $notification->created_at->diffForHumans() }} </span>
+                        <li>
+                            {{ $notification->data['name'] }} &nbsp; {{ $notification->data['message'] }}
+                            <span class="pull-right"> {{ $notification->created_at->diffForHumans() }} </span>
+                        </li>
                     @endforeach
                 </ul>
             </div>

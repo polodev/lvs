@@ -15,6 +15,9 @@ export const store = new Vuex.Store({
     },
     allNotificationsCount (state) {
       return state.notifications.length;
+    },
+    posts (state) {
+      return state.posts;
     }
   },
   mutations: {
