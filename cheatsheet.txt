@@ -262,6 +262,19 @@ public function getAvatarAttribute($avatar){
   return asset(Storage::url($avatar));
 }
 
+#45 components: {}
+==============================================================
+//feed.vue
+<script>
+import like from './like';
+export default {
+    mounted() {
+    },
+    components: {
+        like
+    }
+}
+</script>
 
 
 
