@@ -14,6 +14,14 @@
             <p class="text-center">
               {{ post.content }}
             </p>
+            <button class="btn btn-xs btn-info">Like post</button>
+            <hr>
+            <img :src="post.user.avatar" width="20px" height="20px" alt="">
+            <img :src="post.user.avatar" width="20px" height="20px" alt="">
+            <img :src="post.user.avatar" width="20px" height="20px" alt="">
+            <img :src="post.user.avatar" width="20px" height="20px" alt="">
+            <img :src="post.user.avatar" width="20px" height="20px" alt="">
+            <img :src="post.user.avatar" width="20px" height="20px" alt="">
           </div>
         </div>
       </div>
