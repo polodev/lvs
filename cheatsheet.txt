@@ -296,7 +296,7 @@ php artisan make:seeder UsersTableSeeder
       $user->profile()->save( factory(App\Profile::class)->make() );
     });
 
-#53 laravel scout and algolia indexing 
+#54 laravel scout and algolia indexing 
 ==============================================================
 composer require laravel/scout
 //adding in config/app.php as service provider
@@ -312,6 +312,14 @@ adding ALGOLIA_APP_ID and ALGOLIA_SECRET inside .env file
 //indexing
 php artisan scout:import <modelname: App\User>
 
+#53 algolia in frontend
+==============================================================
+import algoliasearch from 'algoliasearch';
+var client = algoliasearch('QU9E2N02CE', 'b7dd14f43589bb720730409ba9d339ae');
+var index = client.initIndex('users');
+index.search(this.searchKey, function(err, content) {
+    console.log("content", content.hits);
+});
 
 
 
