@@ -5,6 +5,16 @@
         <div class="form-group">
           <input type="text" class="form-control" v-model="searchKey" @keyup.enter="search">
         </div>
+        <div v-if="users.length" class="row">
+          <div v-for="user in users" class="text-center">
+            <img width="100px" height="auto" :src="user.avatar" alt="">
+              <h1>
+                <a :href="'/profile/' + user.slug">
+                  {{ user.name }}
+                </a>
+              </h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -19,14 +29,16 @@ export default {
   },
   data () {
     return {
-      searchKey: ""
+      searchKey: "",
+      users: []
     }
   },
   props: [],
   methods: {
     search() {
-      index.search(this.searchKey, function(err, content) {
-        console.log("content", content.hits);
+      index.search(this.searchKey, (err, content) => {
+        console.log('content', content)
+        this.users = content.hits;
       });
     }
   }
