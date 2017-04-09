@@ -296,6 +296,23 @@ php artisan make:seeder UsersTableSeeder
       $user->profile()->save( factory(App\Profile::class)->make() );
     });
 
+#53 laravel scout and algolia indexing 
+==============================================================
+composer require laravel/scout
+//adding in config/app.php as service provider
+Laravel\Scout\ScoutServiceProvider::class,
+// publish scout config file > config/scout.php
+php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
+//using Searchable trait inside any model
+use Laravel\Scout\Searchable;
+use Searchable;
+// downloading algolia drivers
+composer require algolia/algoliasearch-client-php
+adding ALGOLIA_APP_ID and ALGOLIA_SECRET inside .env file
+//indexing
+php artisan scout:import <modelname: App\User>
+
+
 
 
 
