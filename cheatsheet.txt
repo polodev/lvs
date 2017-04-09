@@ -276,9 +276,25 @@ export default {
 }
 </script>
 
+#52 usort
+==============================================================
+usort($feed, function ($p1, $p2) {
+  return $p1->id < $p2->id;
+});
 
+#53 seeder
+==============================================================
+php artisan make:seeder UsersTableSeeder
 
-
+//from DatabaseSeeder call the seeder inside run function by uncomment
+    $this->call(UsersTableSeeder::class);
+    php artisan db:seed 
+//relation factory
+    factory(App\User::class, 40)
+    ->create()
+    ->each(function($user) {
+      $user->profile()->save( factory(App\Profile::class)->make() );
+    });
 
 
 
