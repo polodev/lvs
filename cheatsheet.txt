@@ -92,7 +92,7 @@ foreach($arr, $val)
 #13, collect, is_array( $needle, $heystack )
 ====================================================
 return collect($this->friends())->pluck('id'); //return []
-is_array($user_id, $this->friends_id()->toArray())
+in_array($user_id, $this->friends_id()->toArray())
 
 #14, added add_friend and accept_friend validation
 ====================================================
